@@ -39,6 +39,10 @@ export default function Movies() {
         setIsLoading(true);
 
         const { results } = await searchMovie(movieSearch);
+
+        if (results.length === 0) {
+          return toast('...Nothing found :-(');
+        }
         setSearchMovies(results);
       } catch (error) {
         toast.error(
@@ -59,11 +63,7 @@ export default function Movies() {
         onSubmit={handleSubmit}
       />
       {isLoading && <Loader />}
-      {searchMovies.length === 0 ? (
-        <p>...Nothing found</p>
-      ) : (
-        <MovieList movies={searchMovies} />
-      )}
+      <MovieList movies={searchMovies} />
     </div>
   );
 }
