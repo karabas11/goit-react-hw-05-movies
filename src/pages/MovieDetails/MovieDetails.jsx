@@ -14,7 +14,6 @@ export default function MovieDetails() {
   const location = useLocation();
   const linkRef = useRef(location);
   const backLinkHref = linkRef.current.state?.from ?? '/';
-  console.log(location);
 
   const [movieDetails, setMovieDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
